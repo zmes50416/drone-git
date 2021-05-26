@@ -13,8 +13,6 @@ fi
 set -e
 set -x
 
-git fetch ${FLAGS} origin +refs/heads/${DRONE_COMMIT_BRANCH}:
-git checkout ${DRONE_COMMIT_BRANCH}
 
-git fetch origin ${DRONE_COMMIT_REF}:
-git merge ${DRONE_COMMIT_SHA}
+git fetch ${FLAGS} origin +refs/pull/${DRONE_PULL_REQUEST}/merge:pull/${DRONE_PULL_REQUEST}/merge
+git checkout pull/${DRONE_PULL_REQUEST}/merge
