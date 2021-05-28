@@ -13,6 +13,8 @@ fi
 set -e
 set -x
 
-
-git fetch ${FLAGS} origin +refs/pull/${DRONE_PULL_REQUEST}/merge:pull/${DRONE_PULL_REQUEST}/merge
+git fetch ${FLAGS} origin refs/pull/${DRONE_PULL_REQUEST}/merge:pull/${DRONE_PULL_REQUEST}/merge
 git checkout pull/${DRONE_PULL_REQUEST}/merge
+
+# fetch the COMMIT_BRANCH for other tools to reference.
+git fetch origin ${DRONE_COMMIT_BRANCH}:${DRONE_COMMIT_BRANCH}
